@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath mnist-flask.app:app
+web: gunicorn --pythonpath mnist-flask.app
