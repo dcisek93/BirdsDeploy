@@ -1,0 +1,290 @@
+{% extends "material/base.html " %}
+
+{%block content %}
+
+
+<!DOCTYPE html>
+<html>
+   
+  
+  
+  <head>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+      <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+        <!--Using Google's Lora Font-->
+        <style>
+        body {
+            font-family: 'Lora';font-size: 14px;
+        }
+        </style>  
+  </head>
+   <body style= "background-image: url({{ url_for('static', filename='/foggy_birds2.jpg') }})">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script>
+          $(function(){
+        //this will hide all elements with the class 'portswap';
+        //Recommend you set the style (CSS) of PortSwap to 'display: none',
+        //so as to avoid flash of unstyled content;
+        $(".PortSwap").not('#swap_0').hide();
+        $('#swap_0').addClass("active");
+
+        $('.btn_nav').on('click',function(){
+            var activediv = $('.PortSwap.active').first();
+            var activediv_id = parseInt(activediv[0].id.split('_')[1]);
+            switch(this.id){
+                //execute code when backward button is pressed
+                case 'btn_backward':
+                    if(activediv_id-1 >= 0){
+                        //previous iteration of div is present, show it
+                        activediv.removeClass('active').hide();                                
+                        $('#swap_'+(activediv_id-1)).show().addClass('active');
+                    } else {
+                        //No previous div is present, remain on same page.
+                    }
+                    break;
+                //execute code when forward button is pressed
+                case 'btn_forward':
+                    if(activediv_id+1 < $('.PortSwap').length){
+                        //Next iteration of div is present, show it
+                        activediv.removeClass('active').hide();                                
+                        $('#swap_'+(activediv_id+1)).show().addClass('active');
+                    } else {
+                        //No next div is present, remain on same page.
+                    }                            
+                    break;
+            }
+        }); 
+    });
+         </script>
+
+      <div class = "no-blur" >
+         <div class="nav-wrapper transparent no-shadows no-blur ">
+            <nav class="transparent transparentBG no-shadows no-blur">
+           <a href="http://127.0.0.1:5000/" class="pull-left"><img src="/static/logo4.png" height = '220%' length = '220%' align="center"></a> 
+           <!-- Icons made by Freepik "http://www.freepik.com/" from flatiron "https://www.flaticon.com/" -->
+           <ul id="nav-mobile" class="right hide-on-med-and-down no-shadows no-blur"style="margin-right:4%;">
+             <li><a href="http://127.0.0.1:5000/" class="color-me">Home</a></li>
+             <li><a href="http://127.0.0.1:5000/about"class="color-me">About</a></li>
+           </ul>
+         </nav>
+         </div>
+      </div>
+  <div id="content">
+        <div id="ncholder">
+          <div id="ncframe"></div>
+          <div class="PortSwap" id="swap_0">
+          <div class = "row  login " style = "padding-top: 75px;">
+                <div class = "col s12 l6 offset-l3 ">
+                   <div class = "card">
+                       
+                       <div class = "card-content">
+                         <div class="card-content white-text">
+                            <span class="card-title center-align"><p style="font-size:20px">Found a feather?</p></span>
+                            <p style="font-size:14px"><br>The Aviary is designed to help you identify what species of bird a feather may have come from. We leverage cutting-edge computer vision approaches to identify key features on user-uploaded pictures of feathers, 
+                               identify potential matches, and deliver a customized report containing species information, our confidence rating on the match, and links to more information.     </p>
+                               <div id="ncnav">
+                                <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating " style = "margin: 3px; padding: 0px; line-height:0; background-color: #3498DB; letter-spacing: -4px; float: right;border-color: transparent; " value="&raquo"/>
+                                <input type="button " id="btn_backward" alt="Previous" class="btn_nav round btn-floating " style = "margin: 3px; padding: 0px; line-height:0;background-color: #3498DB; letter-spacing: -4px; float: right; border-color: transparent;" value="&laquo"/>
+                                
+                              </div></div><br>
+            
+                   </div>
+                   
+                </div>
+             </div>         
+            </div>
+    
+            </div>
+          <div class="PortSwap" id="swap_1">
+            <div class = "row  login " style = "padding-top: 75px;">
+              <div class = "col s12 l6 offset-l3 ">
+                <div class = "card">
+                    
+                    <div class = "card-content">
+                      <div class="card-content white-text">
+                         <span class="card-title center-align"><p style="font-size:20px">Your Turn</p></span>
+                         <p style="font-size:14px"><br>Ready to try it for yourself? Use the file upload tool below to upload your image or<a href='/uploader2'><input type="button"  style="font-size:14px; line-height:0.7; background-color:transparent; border-color: transparent;    padding-right: 0px;
+                           padding-bottom: 0px;
+                           padding-left: 0px;
+                          margin-top: 0px; font:Lora;" value =" click here"> </a> to use a default image. For best results we recommend taking a picture of the feather in a well-lit area in front of a solid colored background. The more clearly 
+                         the feather stands out from the background, the better results you'll get.      </p>
+                            <div id="ncnav"><div class = "row ">
+                             <div class="input-field col s6 offset-l2 transparentBG transparent" type = "submit/" id="myImage" style="color:transparent" >
+                                <form action = "{{ url_for('user_image') }}" method = "POST" 
+                                enctype = "multipart/form-data">
+                                
+                                <label style="  display: inline-block; padding: 12px 18px; cursor: pointer;border-radius: 5px;
+                                   background-color: #3498DB; font-size: 16px;font-weight: bold; color: #fff;"
+                                 class="button z-depth-1" for="upload">Upload File</label>
+         
+ 
+                                <input id="upload" type = "file" name = "file" style="  position: absolute; z-index: -1;
+                                top: 10px; left: 8px;font-size: 17px;color: #b8b8b8;     margin-left: 14px;
+                                margin-top: 10px;color: white !important; margin-bottom: 95px;" />
+                                
+                            
+                             
+                             </div>
+                             <div class="input-field col s2  " type="submit/">
+                               <button class="btn waves-effect " style=" background-color: #3498DB !important;padding: 0px 20px !important;
+                               width: 80px; padding-bottom: 81px;height: 48px;font-weight: 700;border-radius: 6px;     margin-left: 20px; font-size: 16px;
+    font-weight: bold;
+                               margin-top: 10px;" stype="submit" name="action">Go!
+                           
+                               </button>
+                              
+                    
+                         
+                                 </div>
+                                 
+                             </div>
+                             
+ 
+                            
+                             <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating" style = "margin: 3px;background-color: #3498DB; padding: 0px; line-height:0; letter-spacing: -4px; float: right;border-color: transparent; " value="&raquo"/>
+                             <input type="button " id="btn_backward" alt="Previous" class="btn_nav round btn-floating " style = "margin: 3px;background-color: #3498DB; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&laquo"/>
+                              <div id="ncnav"  class="custom_nav" >
+                                  <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating" style = "margin: 3px; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&raquo"/>
+                                  <input type="button " id="btn_backward" alt="Previous" class="btn_nav round btn-floating " style = " margin: 3px; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&laquo"/>
+                                 </div>
+                           </div>
+                           
+                         
+                         </div><br>
+          
+                       
+       
+       
+       
+                         
+             <div></div>
+                </div>
+                
+                     
+                
+             </div>
+          </div>         
+        </div></div>
+         <!-- <div class="PortSwap" id="swap_2"><div class = "row  login " style = "padding-top: 75px;">
+            <div class = "col s12 l6 offset-l3 ">
+               <div class = "card">
+                   
+                   <div class = "card-content">
+                     <div class="card-content white-text">
+                        <span class="card-title center-align"><p style="font-size:20px">Your Turn</p></span>
+                        <p style="font-size:14px"><br>Ready to try it for yourself? Use the file upload tool below to upload your image or<a href='/uploader2'><input type="button"  style="font-size:14px; line-height:0.7; background-color:transparent; border-color: transparent;    padding-right: 0px;
+                          padding-bottom: 0px;
+                          padding-left: 0px;
+                         margin-top: 0px; font:Lora;" value =" click here"> </a> to use a default image. For best results we recommend taking a picture of the feather in a well-lit area in front of a solid colored background. The more clearly 
+                        the feather stands out from the background, the better results you'll get.      </p>
+                           <div id="ncnav"><div class = "row ">
+                            <div class="input-field col s6 offset-l2 transparentBG transparent" type = "submit/" id="myImage" style="color:transparent" >
+                               <form action = "{{ url_for('user_image') }}" method = "POST" 
+                               enctype = "multipart/form-data">
+                               
+                               <label style="  display: inline-block; padding: 12px 18px; cursor: pointer;border-radius: 5px;
+                                  background-color: darkblue; font-size: 16px;font-weight: bold; color: #fff;"
+                                class="button" for="upload">Upload File</label>
+        
+
+                               <input id="upload" type = "file" name = "file" style="  position: absolute; z-index: -1;
+                               top: 10px; left: 8px;font-size: 17px;color: #b8b8b8;     margin-left: 14px;
+                               margin-top: 10px;color: white !important; margin-bottom: 95px;" />
+                               
+                           
+                            
+                            </div>
+                            <div class="input-field col s2  " type="submit/">
+                              <button class="btn waves-effect " style=" background-color: darkblue !important;padding: 0px 20px !important;
+                              width: 80px; padding-bottom: 81px;height: 48px;font-weight: 700;border-radius: 6px;     margin-left: 20px;
+                              margin-top: 10px;" stype="submit" name="action">Go!
+                          
+                              </button>
+                             
+                   
+                        
+                                </div>
+                                
+                            </div>
+                            
+
+                           
+                            <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating" style = "margin: 3px;background-color: #3498DB; padding: 0px; line-height:0; letter-spacing: -4px; float: right;border-color: transparent; " value="&raquo"/>
+                            <input type="button " id="btn_backward" alt="Previous" class="btn_nav round btn-floating " style = "margin: 3px;background-color: #3498DB; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&laquo"/>
+                             <div id="ncnav"  class="custom_nav" >
+                                 <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating" style = "margin: 3px; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&raquo"/>
+                                 <input type="button " id="btn_backward" alt="Previous" class="btn_nav round btn-floating " style = " margin: 3px; padding: 0px; line-height:0; letter-spacing: -4px; float: right; border-color: transparent; " value="&laquo"/>
+                                </div>
+                          </div>
+                          
+                        
+                        </div><br>
+         
+                      
+      
+      
+      
+                        
+            <div></div>
+               </div>
+               
+                    
+               
+            </div>
+         </div>         
+        </div></div> -->
+        </div>
+        
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+   
+   <!-- <div class = "row  login ">
+      <div class = "col s12 l6 offset-l3 ">
+         <div class = "card">
+             
+             <div class = "card-content">
+               <div class="card-content white-text">
+                  <span class="card-title center-align"><p style="font-size:20px">Found a feather?</p></span>
+                  <p style="font-size:14px"><br>Fly.AI is designed to help you identify what species of bird a found feather may have come from. We leverage cutting-edge computer vision approaches to identify key features from a feather, 
+                     identify potential matches, and deliver a customized report containing species information, our confidence rating on the match, and links to more information.     </p>
+                </div><br>
+   
+                <div id="content">
+                    <div id="ncholder">
+                      <div id="ncframe"></div>
+                      <div class="PortSwap" id="swap_0">
+                          Web Screen 1</div>
+                      <div class="PortSwap" id="swap_1">Web Screen 2</div>
+                      <div class="PortSwap" id="swap_2">Web Screen 3</div>
+                    </div>
+                    <div id="ncnav">
+                        <input type="button" id="btn_backward" alt="Previous" class="btn_nav round btn-floating" value="Backward"/>
+                        <input type="button" id="btn_forward" alt="Next" class="btn_nav round btn-floating" value="Forward"/>
+                      </div>
+                  </div>
+                -->
+
+
+                
+
+     
+
+
+
+
+{%endblock %} 

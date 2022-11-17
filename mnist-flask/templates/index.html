@@ -1,0 +1,184 @@
+
+{% extends "material/base.html " %}
+
+{%block content %}
+
+<!-- 
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Flask app</title>
+         
+      </head>
+    <body style= "background-image: url({{ url_for('static', filename='/foggy_birds.png') }})">
+          
+       </body>
+    <nav>
+        <div class="nav-wrapper indigo lighten-1">
+          <a href="#" class="pull-left"><img src="/static/logo3.png" height = '65%' length = '65%' align="center"></a> 
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="http://127.0.0.1:5000/">Home</a></li>
+            <li><a href="http://127.0.0.1:5000/about">About Me</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </nav>
+      <body>
+         <form action = "{{ url_for('upload_image_file') }}" method = "POST" 
+            enctype = "multipart/form-data">
+            <input type = "file" name = "file" />
+            <input type = "submit"/>
+         </form>
+      </body>
+    </body>
+
+</html>
+   -->
+<!DOCTYPE html>
+<html>
+   
+  
+  
+  <head>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> 
+   <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+      <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+        <!--Using Google's Lora Font-->
+        <style>
+        body {
+            font-family: 'Lora';font-size: 22px;
+        }
+        </style>  
+  </head>
+
+  
+   <body style= "background-image: url({{ url_for('static', filename='/foggy_birds2.jpg') }})">
+      <script>
+         function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+         </script>
+
+      <div class = "no-blur" >
+         <div class="nav-wrapper transparent no-shadows no-blur " >
+            <nav class="transparent transparentBG no-shadows no-blur">
+            
+           <a href="http://127.0.0.1:5000/" class="pull-left" style = "padding: 0 60px 0 60px;"><img src="/static/logo3.png" height = '65%' length = '65%' align="center"></a> 
+           <!-- Icons made by Freepik "http://www.freepik.com/" from flatiron "https://www.flaticon.com/" -->
+           <ul id="nav-mobile" class="right hide-on-med-and-down no-shadows no-blur">
+             <li><a href="http://127.0.0.1:5000/">Home</a></li>
+             <li><a href="http://127.0.0.1:5000/about">About</a></li>
+             <li><a href="collapsible.html">JavaScript</a></li>
+           </ul>
+         </nav>
+         </div>
+      </div>
+
+ 
+      
+   
+   <div class = "row  login ">
+      <div class = "col s12 l6 offset-l3 " >
+         <div class = "card">
+             
+             <div class = "card-content" style = "padding-top:65px;">
+               <div class="card-content white-text">
+                  <span class="card-title center-align"><p style="font-size:20px">Found a feather?</p></span>
+                  <p style="font-size:14px"><br>Fly.AI is designed to help you identify what species of bird a found feather may have come from. We leverage cutting-edge computer vision approaches to identify key features from a feather, 
+                     identify potential matches, and deliver a customized report containing species information, our confidence rating on the match, and links to more information.     </p>
+                </div><br>
+   
+   
+   
+    <div class = "form-field center-align">
+      <button onclick="myFunction()"  >Next</button>
+      <div id="myDIV" style='display: none'>
+         <div class = "no-blur">
+            <div class="nav-wrapper transparent no-shadows no-blur ">
+               <nav class="transparent transparentBG no-shadows no-blur">
+              <a href="http://127.0.0.1:5000/" class="pull-left"><img src="/static/logo3.png" height = '65%' length = '65%' align="center"></a> 
+              <!-- Icons made by Freepik "http://www.freepik.com/" from flatiron "https://www.flaticon.com/" -->
+              <ul id="nav-mobile" class="right hide-on-med-and-down no-shadows no-blur">
+                <li><a href="http://127.0.0.1:5000/">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/about">About</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+              </ul>
+            </nav>
+            </div>
+         </div>
+       </div>
+   </div>
+    
+      <div class = "row ">
+         <div class="input-field col s6 offset-l2 transparentBG transparent" type = "submit/" style="color:transparent" >
+            <form action = "{{ url_for('upload_image_file') }}" method = "POST" 
+            enctype = "multipart/form-data">
+            
+            <input type = "file" name = "file"  />
+            <!--<button class="btn waves-effect waves-light" type="file" name="file">up!
+            </button> -->
+        
+         
+         </div>
+            <div class="input-field col s2  " type = "submit/">
+               <button class="btn waves-effect " type="submit" name="action">Go! 
+               </button>
+           </div>
+           <p style="font-size:14px"><br>Fly.AI is designed to help you identify what species of bird a found feather may have come from. We leverage cutting-edge computer vision approaches to identify key features from a feather, 
+            identify potential matches, and deliver a customized report containing species information, our confidence rating on the match, and links to more information.     </p>
+
+
+     
+             </div>
+         </div>
+         
+      </div>
+   </div>         
+  </div>
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+  </head>
+   <body style= "background-image: url({{ url_for('static', filename='/foggy_birds2.jpg') }})">
+          
+   </body>
+
+<div class = "row  login ">
+   <div class = "col s12 l4 offset-l4 ">
+<ul id="tabs_swipe" class="tabs">
+   <li class="tab col"><a class="active" href="#html5">Welcome!</a></li>
+   <li class="tab col"><a href="#css3">Ready to go?</a></li>
+   
+</ul>
+
+<div id="html5" class="col s12 deep-orange">
+   <h3>HTML5 Tutorial</h3>
+</div>
+<div id="css3" class="col s12 light-blue">
+   <h3>CSS3 Tutorial</h3>
+</div>
+</div>
+</div>
+
+-->
+</body>
+</html> 
+<!-- <footer class="section page-footer transparent" style="position:fixed;bottom:0;left:0;width:100%;">
+   <div class="container center-align">
+      <p style="font-size:14px"><b> &#169; Daniel Cisek 2020</b></p>
+   </div>
+ </footer> -->
+{%endblock %} 

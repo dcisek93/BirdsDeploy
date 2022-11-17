@@ -1,0 +1,66 @@
+CSS
+
+.login{
+	margin-top: 100px;
+}
+.login .card{
+	background: rgba(0, 0, 0, .6) !important ;
+}
+
+
+.login label{
+	font-size: 16px;
+	color:#ccc;
+}
+.transparentBG {
+	background-color: rgba(0,0,0,0);
+  }
+
+.no-shadows{
+	-webkit-box-shadow:none !important;
+	-moz-box-shadow:none !important;
+	box-shadow:none !important;
+}
+.color-me{
+	color:#3498DB;
+	font-family: Lora;
+}
+.side-nav2{-webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	-moz-box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+main {
+	flex: 1 0 auto;
+}
+.findbtn{
+	background-color: #A2A19F;
+  }
+  ul.new > li 
+  { 
+  list-style: disc;
+  margin: 0 0 26px 35px;    
+  }
+pr {
+    margin-top:-5px;
+}
+
+. custom_html {
+	padding-bottom: 30px !important;
+	padding-right: 30px !important;
+}
+
+$(document).ready(function() {
+	$('ul.tabs').tabs();
+	$("#btnContinue").click(function() {
+	  $('ul.tabs').tabs('select_tab', 'test2');
+	});
+  });
+  .no-click {pointer-events: none;}
+ 
+  
+
