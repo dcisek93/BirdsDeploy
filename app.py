@@ -38,7 +38,7 @@ app = Flask(__name__, template_folder='templates')
 Material(app)
 def init():
    global model,graph
-   model = load_model(CURRENT_DIRECTORY + '\mnist-flask\model\H5.h5')
+   model = load_model(CURRENT_DIRECTORY + '\model\H5.h5')
    graph = ops.reset_default_graph()
 
    
@@ -108,9 +108,9 @@ def upload_image_file(img):
       names_string = ','.join(names_list)
       #absolute_image_paths = response.download({"keywords":names_string,"limit":1,"no_directory":"1", "output_directory": r"C:\Users\dcise\Desktop\Birds\ai-examples-master\Pulled", "no_download":1, "aspect_ratio": "square", "format":"jpg"})
       
-      image1 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[0] + '.jpg'  #absolute_image_paths[0][names_list[0]][0]
-      image2 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[1] + '.jpg' #absolute_image_paths[0][names_list[1]][0]
-      image3 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[2] + '.jpg' #absolute_image_paths[0][names_list[2]][0]
+      image1 = CURRENT_DIRECTORY + r"\static\birds" + '\\' + names_list[0] + '.jpg'  #absolute_image_paths[0][names_list[0]][0]
+      image2 = CURRENT_DIRECTORY + r"\static\birds" + '\\' + names_list[1] + '.jpg' #absolute_image_paths[0][names_list[1]][0]
+      image3 = CURRENT_DIRECTORY + r"\static\birds" + '\\' + names_list[2] + '.jpg' #absolute_image_paths[0][names_list[2]][0]
       image_list = [image1, image2, image3]
       jjj=1
       #for var in image_list:
@@ -158,7 +158,7 @@ def user_image():
 def default_image():
     #if request.method == 'POST':
         app.logger.warning('TEST')
-        image = np.asarray(Image.open(CURRENT_DIRECTORY + r'\mnist-flask\static\example.jpg'))
+        image = np.asarray(Image.open(CURRENT_DIRECTORY + r'\static\example.jpg'))
         returned = upload_image_file(image)
         return returned
     #else: 
