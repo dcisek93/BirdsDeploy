@@ -37,7 +37,7 @@ def init():
    
 @app.route('/')
 def upload_file():
-   return render_template(CURRENT_DIRECTORY + r'\mnist-flask\templates' + 'index2.html')
+   return render_template(CURRENT_DIRECTORY + r'/mnist-flask/templates/' + 'index2.html')
 
 @app.route('/about/')
 def about():
