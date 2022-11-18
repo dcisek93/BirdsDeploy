@@ -4,16 +4,9 @@ Created on Thu Jun  4 11:15:48 2020
 
 @author: dcise
 """
-#from matplotlib.pyplot import imshow
+
 import numpy as np
-#from PIL import Image
-
-#%matplotlib inline
-#pil_im = Image.open('data/empire.jpg', 'r')
-#imshow(np.asarray(pil_im))
 import os
-
-CURRENT_DIRECTORY = os.path.abspath(os.path.join(os.path.dirname('app.py')))
 from flask import Flask, render_template, request, url_for
 from flask_material import Material 
 from PIL import Image
@@ -26,13 +19,13 @@ from base64 import b64encode
 from tensorflow.keras.models import load_model
 import tensorflow as tf
 import io
-
 from io import BytesIO
 from tensorflow.python.framework import ops
 from urllib.parse import urljoin, quote
-##from google_images_download import google_images_download
 import wikipedia
-#response = google_images_download.googleimagesdownload()
+
+CURRENT_DIRECTORY = os.path.abspath(os.path.join(os.path.dirname('app.py')))
+
 
 app = Flask(__name__, template_folder='templates')
 Material(app)
@@ -44,7 +37,7 @@ def init():
    
 @app.route('/')
 def upload_file():
-   return render_template('index2.html')
+   return render_template(CURRENT_DIRECTORY + r'\mnist-flask\templates' + 'index2.html')
 
 @app.route('/about/')
 def about():
@@ -104,20 +97,15 @@ def upload_image_file(img):
          r.close
          jj = jj+1
          
-      #return 'We\'re ' + str(zq) + '% sure that this feather is from a ' + str(zr)
-      names_string = ','.join(names_list)
-      #absolute_image_paths = response.download({"keywords":names_string,"limit":1,"no_directory":"1", "output_directory": r"C:\Users\dcise\Desktop\Birds\ai-examples-master\Pulled", "no_download":1, "aspect_ratio": "square", "format":"jpg"})
       
+      names_string = ','.join(names_list)
+            
       image1 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[0] + '.jpg'  #absolute_image_paths[0][names_list[0]][0]
       image2 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[1] + '.jpg' #absolute_image_paths[0][names_list[1]][0]
       image3 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[2] + '.jpg' #absolute_image_paths[0][names_list[2]][0]
       image_list = [image1, image2, image3]
       jjj=1
-      #for var in image_list:
-        #pix = np.asarray(Image.open(r'C:\Users\dcise\Desktop\Birds\ai-examples-master\mnist-flask\static\example.jpg'))
-        #img = Image.fromarray(pix.astype('uint8'))
-        #encoded_string = base64.b64encode(image_bytes).decode()      
-        #globals()["w" + str(jjj)] = base64.b64encode(img).decode() 
+      
       globals()["w" + str(1)] = 'mnist-flask/static/birds/' + names_list[0] + '.jpg'
       globals()["w" + str(2)] = 'mnist-flask/static/birds/' + names_list[1] + '.jpg'
       globals()["w" + str(3)] = 'mnist-flask/static/birds/' + names_list[2] + '.jpg'
