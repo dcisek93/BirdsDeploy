@@ -34,7 +34,7 @@ from urllib.parse import urljoin, quote
 import wikipedia
 #response = google_images_download.googleimagesdownload()
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='mnist-flask/templates')
 Material(app)
 def init():
    global model,graph
