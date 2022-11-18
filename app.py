@@ -44,7 +44,7 @@ def init():
    
 @app.route('/')
 def upload_file():
-   return render_template('templates/index2.html')
+   return render_template('/templates/index2.html')
 
 @app.route('/about/')
 def about():
