@@ -27,17 +27,17 @@ import wikipedia
 CURRENT_DIRECTORY = os.path.abspath(os.path.join(os.path.dirname('app.py')))
 
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='./templates')
 Material(app)
 def init():
    global model,graph
-   model = load_model(CURRENT_DIRECTORY + '\mnist-flask\model\H5.h5')
+   model = load_model('./model/H5.h5')
    graph = ops.reset_default_graph()
 
    
 @app.route('/')
 def upload_file():
-   return render_template(CURRENT_DIRECTORY + r'/mnist-flask/templates/' + 'index2.html')
+   return render_template('index2.html')
 
 @app.route('/about/')
 def about():
@@ -100,15 +100,15 @@ def upload_image_file(img):
       
       names_string = ','.join(names_list)
             
-      image1 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[0] + '.jpg'  #absolute_image_paths[0][names_list[0]][0]
-      image2 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[1] + '.jpg' #absolute_image_paths[0][names_list[1]][0]
-      image3 = CURRENT_DIRECTORY + r"\mnist-flask\static\birds" + '\\' + names_list[2] + '.jpg' #absolute_image_paths[0][names_list[2]][0]
+      image1 = r"\static\birds" + '\\' + names_list[0] + '.jpg'  #absolute_image_paths[0][names_list[0]][0]
+      image2 = r"\static\birds" + '\\' + names_list[1] + '.jpg' #absolute_image_paths[0][names_list[1]][0]
+      image3 = r"\static\birds" + '\\' + names_list[2] + '.jpg' #absolute_image_paths[0][names_list[2]][0]
       image_list = [image1, image2, image3]
       jjj=1
       
-      globals()["w" + str(1)] = 'mnist-flask/static/birds/' + names_list[0] + '.jpg'
-      globals()["w" + str(2)] = 'mnist-flask/static/birds/' + names_list[1] + '.jpg'
-      globals()["w" + str(3)] = 'mnist-flask/static/birds/' + names_list[2] + '.jpg'
+      globals()["w" + str(1)] = '/static/birds/' + names_list[0] + '.jpg'
+      globals()["w" + str(2)] = '/static/birds/' + names_list[1] + '.jpg'
+      globals()["w" + str(3)] = '/static/birds/' + names_list[2] + '.jpg'
         #jjj = jjj + 1
           #image = np.asarray(Image.open(r'C:\Users\dcise\Desktop\Birds\ai-examples-master\mnist-flask\static\example.jpg'))
           #response_image1 = requests.get(var)
@@ -146,7 +146,7 @@ def user_image():
 def default_image():
     #if request.method == 'POST':
         app.logger.warning('TEST')
-        image = np.asarray(Image.open(CURRENT_DIRECTORY + r'\mnist-flask\static\example.jpg'))
+        image = np.asarray(Image.open(CURRENT_DIRECTORY + r'\static\example.jpg'))
         returned = upload_image_file(image)
         return returned
     #else: 

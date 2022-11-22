@@ -1,0 +1,119 @@
+{% extends "material/base.html " %}
+
+{%block content %}
+<head>
+    <title>Flask app</title>
+     
+  </head>
+  <body style= "background-image: url({{ url_for('static', filename='/foggy_birds2.jpg') }})">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+    <div class = "no-blur">
+      <div class="nav-wrapper transparent no-shadows no-blur ">
+         <nav class="transparent transparentBG no-shadows no-blur">
+        <a href="http://127.0.0.1:5000/" class="pull-left"><img src="/static/logo4.png" height = '220%' length = '220%' align="center"></a> 
+        <!-- Icons made by Freepik "http://www.freepik.com/" from flatiron "https://www.flaticon.com/" -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down no-shadows no-blur"style="margin-right:4%;">
+          <li><a href="http://127.0.0.1:5000/" class="color-me">Home</a></li>
+             <li><a href="http://127.0.0.1:5000/about"class="color-me">About</a></li>
+        </ul>
+      </nav>
+      </div>
+   </div>   
+   </body>
+
+
+<div class="row "style = "padding-top: 60px;">
+    <div class="col m4 " >
+      <div class="card" >
+
+        <div class="card-image ">
+          <img src="{{w1}}" width = "480" height = "480" class="responsive-img">
+          
+	<span class="card-title"><p ></p></span>
+        </div>
+        <div class="card-content">
+   
+<div class="row" style="margin-bottom: 0px;">
+	<div class="col m12"> 
+    <p><b>Scientific Name: {{x[top_k[0]]}} <br> Common Name: {{names[0]}}</b></p> <br>
+    <p style="font-size:30px;margin:0; padding:0; line-height:0.7;  "><b>{{percents[0]}}<b></p>
+	</div>
+
+<!-- <div class = "col m3">
+
+            <p style="font-size:30px; text-align:center; "><b>{{percents[0]}}<b></p>
+</div> -->
+</div>
+
+        </div>
+        <div class="card-action">
+          <a href={{wikis[0]}} target="_blank">More Information</a>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{w2}}" width = "480" height = "480" class="responsive-img"> 
+          <!-- <span class="card-title"><H1><p style="color:red;">I am red</p></H1></span> -->
+	<span class="card-title"><p ></p></span>
+        </div>
+        <div class="card-content">
+   
+<div class="row" style="margin-bottom: 0px;">
+	<div class="col m12"> 
+		<p><b>Scientific Name: {{x[top_k[1]]}} <br> Common Name: {{names[1]}}</b></p> <br>
+    <p style="font-size:30px;margin:0; padding:0; line-height:0.7;  "><b>{{percents[1]}}<b></p>
+	</div>
+
+<!-- <div class = "col m3">
+
+            <p style="font-size:30px; text-align:center; "><b>{{percents[1]}}<b></p>
+</div> -->
+</div>
+        </div>
+        <div class="card-action">
+          <a href={{wikis[1]}} target="_blank">More Information</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col m4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{w3}}" width = "480" height = "480" class="responsive-img">
+          <!-- <span class="card-title"><H1><p style="color:red;">I am red</p></H1></span> -->
+	<span class="card-title"><p ></p></span>
+        </div>
+        <div class="card-content">
+   
+<div class="row" style="margin-bottom: 0px;">
+	<div class="col m12"> 
+		<p><b>Scientific Name: {{x[top_k[2]]}} <br> Common Name: {{names[2]}}</b></p> <br>
+    <p style="font-size:30px;margin:0; padding:0; line-height:0.7;  "><b>{{percents[2]}}<b></p>
+	</div>
+
+<!-- <div class = "col m3">
+
+            <p style="font-size:30px; text-align:center; "><b>{{percents[2]}}<b></p>
+</div> -->
+</div>
+        </div>
+        <div class="card-action">
+          <a href={{wikis[2]}} target="_blank">More Information</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- <footer class="section page-footer transparent"style="position:fixed;bottom:0;left:0;width:100%;">
+    <div class="container center-align">
+        &#169; Daniel Cisek 2020
+    </div>
+</footer> -->
+{%endblock %}

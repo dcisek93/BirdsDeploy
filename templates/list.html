@@ -1,0 +1,35 @@
+{% extends "material/base.html " %}
+
+{%block content %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Flask app</title>
+         
+      </head>
+    <body style="background-color:AliceBlue;">
+          
+       </body>
+    <nav>
+        <div class="nav-wrapper indigo lighten-1">
+          <a href="#" class="pull-left"><img src="/static/logo3.png" height = '65%' length = '65%' align="center"></a> 
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="http://127.0.0.1:5000/">Home</a></li>
+            <li><a href="http://127.0.0.1:5000/about">About Me</a></li>
+            <li><a href="collapsible.html">JavaScript</a></li>
+          </ul>
+        </div>
+      </nav>
+      <form action = "{{ url_for('upload_image_file') }}" method = "POST" 
+      enctype = "multipart/form-data">
+      <input type = "file" name = "file" />
+      <input type = "submit"/>
+   </form>
+    </body>
+
+</html>
+
+
+
+{%endblock %}

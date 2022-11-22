@@ -1,0 +1,149 @@
+{% extends "material/base.html " %}
+
+{%block content %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Flask app</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
+        <!--Using Google's Lora Font-->
+        <style>
+        body {
+            font-family: 'Lora';font-size:14px;
+        }
+        </style>
+      </head>
+      <body style= "background-image: url({{ url_for('static', filename='foggy_birds2.jpg') }})">
+        <!-- Background image from Toptal Subtle Patterns: https://www.toptal.com/designers/subtlepatterns-->
+        <div class = "no-blur">
+          <div class="nav-wrapper transparent no-shadows no-blur ">
+             <nav class="transparent transparentBG no-shadows no-blur">
+            <a href="http://127.0.0.1:5000/" class="pull-left"><img src="/static/logo4.png" height = '220%' length = '220%' align="center"></a> 
+            <!-- Icons made by Freepik "http://www.freepik.com/" from flatiron "https://www.flaticon.com/" -->
+            <ul id="nav-mobile" class="right hide-on-med-and-down no-shadows no-blur"style="margin-right:4%;">
+              <li><a href="http://127.0.0.1:5000/" class="color-me">Home</a></li>
+             <li><a href="http://127.0.0.1:5000/about"class="color-me">About</a></li>
+            </ul>
+          </nav>
+          </div>
+       </div>   
+       </body>
+       
+
+
+       <div class = "row  login ">
+        <div class = "col s12 l6 offset-l3  ">
+           <div class = "card">
+               
+               <div class = "card-content">
+                 <div class="card-content white-text">
+                    <span class="card-title center-align"><p style="font-size:20px"></p></span>
+                    <p style="font-size:14px"><br><span class="card-title center-align"><b>Overview</b></span>
+
+              <p >This project was created as a means of answering an all-too-common question (for me): What type of bird does a feather belong to?
+                This is a difficult question given the range of feathers that birds have - contour feathers, semiplumes, down feathers, filoplumes, bristles, and powder down - 
+                all of which display a highly variable appearence.
+                In this regard, Artificial Intelligence is a highly useful tool for answering this question. We're able to use a Convolutional Neural Network (CNN) to identify key features in uploaded images and match them against a library of previously learned representations to identify the species the feather came from. 
+                We rely on ResNet, a state-of-the-art architecture for visual recognition tasks, for this purpose. <br><br> Different organizations have used AI in similar applications to identify bird species from <a href="https://e360.yale.edu/digest/new-artificial-intelligence-helps-to-identify-track-bird-species"target="_blank">pictures</a>, 
+                from recordings of <a href="https://www.audubon.org/news/testing-out-song-sleuth-new-app-identifies-birds-their-calls"target="_blank">bird calls</a>, and through <a href="https://www.makeartwithpython.com/blog/deep-learning-bird-camera/"target="_blank">other methods</a>.
+                Our approach is unique in its focus on feathers alone to identify the species. This presents a unique strength, in that additional context isn't needed for identification (birdsong is 
+                difficult to capture without background noise pollution, a user may not have time to snap a picture of the bird), and gives the user a chance to learn about what species are present in an area 
+                without needing to match the temporal activity patterns exhibited by a species. At the same time this is also a limitation of the project, as some of the feathers in a given species' six types may not
+                contain enough strong, visually distinguishable features to prevent <a href="https://www.pnas.org/content/106/22/8859"target="_blank">misclassification</a>. As such, the best results will come from a bird's contour feathers,
+                which contain the most visually salient features, and are reletively distinct due to the role they playing giving shape and color to a bird. 
+                <br><br> <center>This application is meant for purely educational purposes.</center>
+                
+
+               </p>
+                  </div><br>
+     
+     
+     
+     
+           
+        </div>
+     </div>   
+</div>
+<div class = "col s12 l6 offset-l3  ">
+  <div class = "card">
+      
+      <div class = "card-content">
+        <div class="card-content white-text">
+           <span class="card-title center-align"><p style="font-size:20px"></p></span>
+           <p style="font-size:14px"><br><span class="card-title center-align"><b>Implementation</b></span>
+
+     <p>The computer vision model mentioned above is the backbone of this project, and as such, the rest of the project was built around it. The model was trained and tested in Python, using 
+      <a href="https://www.tensorflow.org/" target="_blank">Tensorflow</a>. Interpreting model results can be tricky at best. We used <a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank">Flask</a> 
+      to stand up this service as a web application, to ensure that we deliver a UI that is accessible and quickly communicates key results without overly-involving the user in the minutiae of deep learning. We used <a href="https://materializecss.com/"target="_blank">Materialize</a> as a front-end for the project, given its ability to extend seamlessly across mobile devices. 
+       <br><br> Several packages and databases were absolutely essential in standing up this application. The Integrated Taxonomic Information System
+       <a href="https://www.itis.gov/"target="_blank">(ITIS)</a> provided a fantastic source of species information and was the primary source of linking scientific names with common names. After identifying the common name for a given species,
+       Python's <a href="https://github.com/hardikvasa/google-images-download"target="_blank">Google Images Download</a> library helped to identify candidate images for each species. Finally, the <a href="https://pypi.org/project/wikipedia/"target="_blank">Wikipedia</a> library helped to provide
+       links to further information for a given species. 
+      
+       
+
+      </p>
+         </div><br>
+
+  
+</div>
+</div>   
+</div>
+
+<div class = "col s12 l6 offset-l3  ">
+  <div class = "card">
+      
+      <div class = "card-content">
+        <div class="card-content white-text">
+           <span class="card-title center-align"><p style="font-size:20px"></p></span>
+           <p style="font-size:14px"><br><span class="card-title center-align"><b>Next Steps</b></span>
+
+     <p>This project is far from complete. There's several things I'd like to add to this project to increase its functionality or simply improve the accuracy of our predictions. These include: 
+      <ul class="new"> 
+        <li>Upgrade model from 50 species to 250 species</li>
+        <li>Investigate other data augmentation strategies to improve model performance</li>
+        <li>Implement geographic bounding to narrow the range of potential predictions</li>
+        <li>Include a map to record the location of finds recorded in the app</li>
+      </ul><br><b> <center>Interested in solving one of these problems, or want to add your own touch to the tool? <br> <a href = "mailto: dcisek15@gmail.com">Contact me</a><br> 
+        </center> </b>
+    <br> <br> <center> You can find more of my work <a href="https://dcisek93.github.io/forty-jekyll-theme/"target="_blank">Here</a></center>
+
+      </p>
+         </div><br>
+
+  
+</div>
+</div>   
+</div>
+
+</div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+      
+
+
+
+
+    </body>
+
+
+</html>
+<!-- <footer class="section page-footer transparent" style="position:fixed;bottom:0;left:0;width:100%;">
+  <div class="container center-align">
+      &#169; <b>Daniel Cisek 2020</b>
+  </div>
+</footer> -->
+{%endblock %}
